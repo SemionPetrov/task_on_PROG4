@@ -6,7 +6,7 @@ from laboroty1.NoRecBinaryTree.noRecBinaryTree_Array import gen_bin_tree_array
 from laboroty1.NoRecBinaryTree.noRecBinaryTree_LoL import gen_bin_tree_list_of_lists
 from laboroty1.RecBinaryTree.RecBinaryTree import gen_bin_tree
 # Импортируем пользовательские исключения
-from exceptions_for_gen_bin_tree import InvalidHeightException, InvalidRootException
+from laboroty1.exceptions_for_gen_bin_tree import InvalidHeightException, InvalidRootException
 
 class TestBinaryTree(unittest.TestCase):
     # Тесты для итеративной версии (словарь)
