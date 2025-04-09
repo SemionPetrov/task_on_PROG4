@@ -13,12 +13,14 @@ def gen_bin_tree_array(Root=17, height=4, L_branch=lambda x: (x - 4) ** 2, R_bra
     tree = [None] * max_nodes
     tree[0] = Root
 
-    for i in range(2 ** height - 1):
+    for i in range(2 ** height):  # Проходим по всем узлам
         if tree[i] is not None:
             left_index = 2 * i + 1
             right_index = 2 * i + 2
+
             if left_index < max_nodes:
                 tree[left_index] = L_branch(tree[i])
+
             if right_index < max_nodes:
                 tree[right_index] = R_branch(tree[i])
 
@@ -27,7 +29,6 @@ def gen_bin_tree_array(Root=17, height=4, L_branch=lambda x: (x - 4) ** 2, R_bra
 
 if __name__ == "__main__":
     try:
-        print(gen_bin_tree_array(Root=5, height=0))
-
+        print(gen_bin_tree_array(Root=17, height=2))
     except Exception as e:
         print(f"Error: {e}")

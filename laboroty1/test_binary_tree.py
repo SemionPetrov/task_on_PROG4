@@ -42,12 +42,12 @@ class TestBinaryTree(unittest.TestCase):
     # Тесты для версии с массивом
     def test_array_height_0(self):
         tree = gen_bin_tree_array(Root=5, height=0)
-        expected = [5, None, None]
+        expected = [5]
         self.assertEqual(tree, expected)
 
     def test_array_height_1(self):
         tree = gen_bin_tree_array(Root=17, height=1)
-        expected = [17, 169, 40, 15129, 306, 1296, 86]
+        expected = [17, 169, 40]
         self.assertEqual(tree, expected)
 
     # Тесты для версии со списком списков
