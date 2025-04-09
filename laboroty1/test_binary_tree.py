@@ -1,10 +1,10 @@
 import unittest
 # Импортируем все реализации генерации дерева
-from NoRecBinaryTree.noRecBinaryTree_iterative import gen_bin_tree_iterative
-from NoRecBinaryTree.noRecBinary_deque import gen_bin_tree_deque
-from NoRecBinaryTree.noRecBinaryTree_Array import gen_bin_tree_array
-from NoRecBinaryTree.noRecBinaryTree_LoL import gen_bin_tree_list_of_lists
-from RecBinaryTree.RecBinaryTree import gen_bin_tree
+from laboroty1.NoRecBinaryTree.noRecBinaryTree_iterative import gen_bin_tree_iterative
+from laboroty1.NoRecBinaryTree.noRecBinary_deque import gen_bin_tree_deque
+from laboroty1.NoRecBinaryTree.noRecBinaryTree_Array import gen_bin_tree_array
+from laboroty1.NoRecBinaryTree.noRecBinaryTree_LoL import gen_bin_tree_list_of_lists
+from laboroty1.RecBinaryTree.RecBinaryTree import gen_bin_tree
 # Импортируем пользовательские исключения
 from exceptions_for_gen_bin_tree import InvalidHeightException, InvalidRootException
 
