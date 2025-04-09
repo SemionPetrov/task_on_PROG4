@@ -1,5 +1,5 @@
 from collections import deque
-from laboroty1.exceptions_for_gen_bin_tree import *
+from laborotory1.exceptions_for_gen_bin_tree import *
 
 def validate_input(Root, height):
     if not isinstance(Root, (int, float)):
