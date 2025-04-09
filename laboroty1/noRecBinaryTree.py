@@ -1,34 +1,36 @@
-def gen_bin_tree(Root = 3, height = 3, L_branch = lambda x: x+3,R_branch = lambda x: x+2 )-> dict:
-    roots = [[Root]]
-    for leaf in range(height):
-        if (len(roots)==1):
-            r =roots[0]
-        else:
-            r =[item for s in roots[-1]for item in s]
-        leaves = list(map(lambda root_value:[L_branch(root_value),R_branch(root_value)],r))
-        roots.append(leaves)
-    roots.reverse()
-    roots[-1] = [roots[-1]]
-    roots[0] = list(map(lambda x:[{str([x]): []},
-                                  {str(x[1]):[]}
-                                  ], roots[0]))
-    for i in range(height):
-        sublist = roots[i]
-        for j in range(len(sublist)):
-            x = sublist.pop()
-            roots[i+1][j//2][j%2] = {str(roots[i+1][j//2][j%2]):x}
-    tree = roots[-1][0][0]
-    return tree
+def gen_bin_tree_iterative(Root=17, height=4, L_branch=lambda x:(x-4)**2, R_branch=lambda x: (x+3) * 2) -> dict:
+    if height == 0:
+        return {'value': Root, 'left': None, 'right': None}
 
-def pretty_print_spaced(tree, level=0):
-    if not tree: return
+    # Создаем корень дерева
+    root = {'value': Root, 'left': None, 'right': None}
 
-    indent = "      " * level
-    print(f"{indent}{tree['value']}")
+    # Список узлов для текущего уровня
+    current_level = [root]
 
-    if 'right' in tree: print(); pretty_print_spaced(tree['right'], level + 1)
+    for _ in range(height):
+        next_level = []
+        for node in current_level:
+            left_value = L_branch(node['value'])
+            right_value = R_branch(node['value'])
 
-    if 'left' in tree: pretty_print_spaced(tree['left'], level + 1)
+            # Создаем левого и правого потомков
+            left_child = {'value': left_value, 'left': None, 'right': None}
+            right_child = {'value': right_value, 'left': None, 'right': None}
 
+            # Присваиваем потомков текущему узлу
+            node['left'] = left_child
+            node['right'] = right_child
+
+            # Добавляем потомков в следующий уровень
+            next_level.append(left_child)
+            next_level.append(right_child)
+
+        # Переходим к следующему уровню
+        current_level = next_level
+
+    # Возвращаем корень дерева
+    return root
 if __name__ == "__main__":
-    print(pretty_print_spaced(gen_bin_tree(Root=5,height=5)))
+    tree = gen_bin_tree_iterative(Root=17, height=2)
+    print(tree)
