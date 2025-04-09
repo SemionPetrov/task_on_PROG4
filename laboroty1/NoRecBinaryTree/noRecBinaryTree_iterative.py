@@ -1,4 +1,13 @@
+from laboroty1.exceptions_for_gen_bin_tree import *
+
+def validate_input(Root, height):
+    if not isinstance(Root, (int, float)):
+        raise InvalidRootException(Root)
+    if not isinstance(height, int) or height < 0:
+        raise InvalidHeightException(height)
+
 def gen_bin_tree_iterative(Root=17, height=4, L_branch=lambda x:(x-4)**2, R_branch=lambda x: (x+3) * 2) -> dict:
+    validate_input(Root, height)
     if height == 0:
         return {'value': Root, 'left': None, 'right': None}
 
@@ -31,6 +40,11 @@ def gen_bin_tree_iterative(Root=17, height=4, L_branch=lambda x:(x-4)**2, R_bran
 
     # Возвращаем корень дерева
     return root
+
+
 if __name__ == "__main__":
-    tree = gen_bin_tree_iterative(Root=17, height=2)
-    print(tree)
+    try:
+        print(gen_bin_tree_iterative(Root=17, height=-2))
+
+    except Exception as e:
+        print(f"Error: {e}")
