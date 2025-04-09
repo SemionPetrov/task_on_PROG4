@@ -7,15 +7,14 @@ def validate_input(Root, height):
     if not isinstance(height, int) or height < 0:
         raise InvalidHeightException(height)
 
-def gen_bin_tree(Root=3, height=3, L_branch=lambda x: x + 3, R_branch=lambda x: x + 2):
+def gen_bin_tree(Root=17, height=4, L_branch=lambda x: (x - 4) ** 2, R_branch=lambda x: (x + 3) * 2):
     validate_input(Root, height)
     if height == 0:
-        return {'value': Root}
+        return {'value': Root, 'left': None, 'right': None}
     else:
         left = gen_bin_tree(L_branch(Root), height - 1, L_branch, R_branch)
         right = gen_bin_tree(R_branch(Root), height - 1, L_branch, R_branch)
         return {'value': Root, 'left': left, 'right': right}
-
 
 def pretty_print_spaced(tree, level=0):
     if not tree: return

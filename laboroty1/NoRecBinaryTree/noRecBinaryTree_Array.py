@@ -11,26 +11,23 @@ def gen_bin_tree_array(Root=17, height=4, L_branch=lambda x: (x - 4) ** 2, R_bra
     # Размер массива для дерева высоты `height`
     max_nodes = 2 ** (height + 1) - 1
     tree = [None] * max_nodes
-
-    # Корень дерева
     tree[0] = Root
 
-    # Заполняем массив
-    for i in range(2 ** height - 1):  # Проходим по всем узлам, кроме последнего уровня
+    for i in range(2 ** height - 1):
         if tree[i] is not None:
             left_index = 2 * i + 1
             right_index = 2 * i + 2
-
-            # Вычисляем значения левого и правого потомков
-            tree[left_index] = L_branch(tree[i])
-            tree[right_index] = R_branch(tree[i])
+            if left_index < max_nodes:
+                tree[left_index] = L_branch(tree[i])
+            if right_index < max_nodes:
+                tree[right_index] = R_branch(tree[i])
 
     return tree
 
 
 if __name__ == "__main__":
     try:
-        print(gen_bin_tree_array(Root=17, height=3))
+        print(gen_bin_tree_array(Root=5, height=0))
 
     except Exception as e:
         print(f"Error: {e}")
