@@ -60,8 +60,25 @@ class TestBinaryTree(unittest.TestCase):
         tree = gen_bin_tree_list_of_lists(Root=17, height=1)
         expected = [
             17,
-            [169, [15129, None, None], [306, None, None]],
-            [40, [1296, None, None], [86, None, None]]
+            [169, None, None],  # Левый потомок
+            [40, None, None]  # Правый потомок
+        ]
+        self.assertEqual(tree, expected)
+
+    def test_list_of_lists_height_2(self):
+        tree = gen_bin_tree_list_of_lists(Root=17, height=2)
+        expected = [
+            17,
+            [
+                169,
+                [27225, None, None],  # Левый потомок второго уровня
+                [344, None, None]  # Правый потомок второго уровня
+            ],
+            [
+                40,
+                [1296, None, None],  # Левый потомок второго уровня
+                [86, None, None]  # Правый потомок второго уровня
+            ]
         ]
         self.assertEqual(tree, expected)
 
