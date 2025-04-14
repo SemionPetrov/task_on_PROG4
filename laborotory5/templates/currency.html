@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Курсы валют ЦБ РФ</title>
+</head>
+<body>
+    <h1>Актуальные курсы</h1>
+    <p>Обновлено: {{last_updated.strftime('%Y-%m-%d %H:%M') }}</p>
+
+    <ul>
+    {% for code, data in rates.items() %}
+        <li><strong>{{ code }}</strong>: {{ data.rate }} ₽ ({{ data.name }})</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
